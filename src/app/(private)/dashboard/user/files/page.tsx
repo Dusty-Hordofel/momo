@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { getAllFiles } from "./files.action";
+import { UserInfo } from "@/components/user-info";
 
 const FilesPage = async () => {
   const user = await currentUser();
@@ -26,9 +27,9 @@ const FilesPage = async () => {
 
   return (
     <div>
+      {/* <UserInfo user={user} label="User Info" /> */}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-4xl font-bold">Vos Fichiers</h1>
-
         {/* <SearchBar query={query} setQuery={setQuery} /> */}
         {/* "/dashboard/user/add-file" */}
         <Link href="/dashboard/user/files/add-file">

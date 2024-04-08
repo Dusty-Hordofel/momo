@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import LoginButton from "../auth/login-button";
 import { Button } from "../ui/button";
 import NavLink from "./NavLink";
+import { useCurrentUserRole } from "@/hooks/use-current-user-role";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 const NavLinks = () => {
   const callbackUrl = "/";
@@ -18,6 +20,11 @@ const NavLinks = () => {
 
   const pathname = usePathname();
   console.log("🚀 ~ NavLinks ~ pathname:", pathname);
+
+  const role = useCurrentUserRole();
+  console.log("🚀 ~ file: Navbar.tsx ~ role", role);
+  const user = useCurrentUser();
+  console.log("🚀 ~ Navbar ~ user:", user);
 
   useEffect(() => {
     const setAuthProviders = async () => {
@@ -32,7 +39,8 @@ const NavLinks = () => {
   return (
     <nav className="flex h-full  place-items-center gap-x-5">
       {/* Menu pour la version desktop */}
-      {!["/dashboard/user/files"].includes(pathname) && (
+      {/* // !["/dashboard/user/files"].includes(pathname) */}
+      {!user && !role && (
         <>
           <ul
             aria-label="submenu"
@@ -52,11 +60,25 @@ const NavLinks = () => {
           <div className=" lg:flex hidden w-[1px] bg-black h-full"></div>
         </>
       )}
-
+      {user && role === "user" && (
+        <ul
+          aria-label="submenu"
+          className="flex h-full place-items-center gap-x-5"
+        >
+          {" "}
+          <li className="hover:bg-gray-200 rounded-md py-3 px-8 border-black border">
+            <NavLink
+              href={`/dashboard/${role}/files`}
+              title="Mon espace"
+              className="text-lg"
+            />
+          </li>
+        </ul>
+      )}
       <div className=" h-full place-items-center flex">
         {session ? (
           <Button
-            className="h-full text-lg"
+            className="h-full text-lg border font-normal text-white  hover:bg-black bg-black hover:bg-black/80 border-black"
             size="lg"
             onClick={() => signOut({ callbackUrl })}
           >
