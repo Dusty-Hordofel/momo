@@ -47,6 +47,21 @@ export async function POST(request: NextRequest) {
       })
       .sort({ createdAt: -1 });
 
+    const dbUserId = files[0].owner._id.toString();
+
+    //verifier que l'utilisateur est le propriétaire du fichier grace à l'id
+    if (dbUserId !== user.id) {
+      return new Response(
+        JSON.stringify({
+          message: "vous n'êtes pas autorisé à effectuer cette action",
+          error: true,
+        }),
+        {
+          status: 403,
+        }
+      );
+    }
+
     return NextResponse.json({ files }, { status: 200 });
   } catch (error: any) {
     return NextResponse.json(

@@ -8,12 +8,17 @@ import FileCard from "../_components/file-card";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getAllFiles } from "./files.action";
 
 const FilesPage = async () => {
   const user = await currentUser();
   const userRole = await currentUserRole();
-  const { files } = await getFiles(user, userRole);
-  console.log("🚀 ~ FilesPage MM ~ files:", files);
+  // const { files } = await getFiles(user, userRole);
+  // console.log("🚀 ~ FilesPage MM ~ files:", files);
+  // @ts-ignore
+  const { files } = await getAllFiles(false);
+  // const {files} = getActionFiles;
+  // console.log("🚀 ~ FilesPage ~ FILES:", getActionFiles.files);
 
   if (!user && userRole !== "user") {
     redirect("/auth/login");

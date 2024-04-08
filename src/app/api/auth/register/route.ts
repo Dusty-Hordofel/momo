@@ -1,6 +1,6 @@
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import validator from "validator";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import connectDB from "@/config/database";
 import User from "@/models/userModel";
 
@@ -8,9 +8,6 @@ interface UserData {
   name: string;
   email?: string;
   password?: string;
-  // genderPreference?: string;
-  // lastName?: string;
-  // firstName?: string;
 }
 export async function POST(req: Request, res: Response) {
   try {
