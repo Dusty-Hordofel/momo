@@ -17,6 +17,7 @@ const NavLinks = () => {
   const [providers, setProviders] = useState(null);
 
   const pathname = usePathname();
+  console.log("🚀 ~ NavLinks ~ pathname:", pathname);
 
   useEffect(() => {
     const setAuthProviders = async () => {
@@ -31,22 +32,26 @@ const NavLinks = () => {
   return (
     <nav className="flex h-full  place-items-center gap-x-5">
       {/* Menu pour la version desktop */}
-      <ul
-        aria-label="submenu"
-        className="flex h-full place-items-center gap-x-5"
-      >
-        <li className=" hover:bg-gray-200 hover:rounded-md py-4 px-8">
-          <NavLink
-            href="/Fonctionnalites"
-            title="Fonctionnalités"
-            className="text-lg"
-          />
-        </li>
-        <li className="hover:bg-gray-200 hover:rounded-md py-4 px-8 ">
-          <NavLink href="/" title="Demander une démo" className="text-lg" />
-        </li>
-      </ul>
-      <div className=" lg:flex hidden w-[1px] bg-black h-full"></div>
+      {!["/dashboard/user/files"].includes(pathname) && (
+        <>
+          <ul
+            aria-label="submenu"
+            className="flex h-full place-items-center gap-x-5"
+          >
+            <li className=" hover:bg-gray-200 hover:rounded-md py-4 px-8">
+              <NavLink
+                href="/Fonctionnalites"
+                title="Fonctionnalités"
+                className="text-lg"
+              />
+            </li>
+            <li className="hover:bg-gray-200 hover:rounded-md py-4 px-8 ">
+              <NavLink href="/" title="Demander une démo" className="text-lg" />
+            </li>
+          </ul>
+          <div className=" lg:flex hidden w-[1px] bg-black h-full"></div>
+        </>
+      )}
 
       <div className=" h-full place-items-center flex">
         {session ? (

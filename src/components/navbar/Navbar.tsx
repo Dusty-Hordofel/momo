@@ -21,21 +21,25 @@ const Navbar = () => {
                 <div className="relative ">
                   <Logo />
                 </div>
-                <ul className=" h-full  min-[1160px]:place-items-center  min-[1160px]:gap-x-5 hidden  min-[1160px]:flex">
-                  <li className=" hover:bg-gray-200 hover:rounded py-4 px-8 ">
-                    <NavLink
-                      href="centres-formations"
-                      className="text-lg"
-                      // className="bg-red-500"
-                      title="Centres de formation"
-                    />
-                  </li>
-                </ul>
+                {!["/dashboard/user/files"].includes(pathname) && (
+                  <ul className=" h-full  min-[1160px]:place-items-center  min-[1160px]:gap-x-5 hidden  min-[1160px]:flex">
+                    <li className=" hover:bg-gray-200 hover:rounded py-4 px-8 ">
+                      <NavLink
+                        href="centres-formations"
+                        className="text-lg"
+                        // className="bg-red-500"
+                        title="Centres de formation"
+                      />
+                    </li>
+                  </ul>
+                )}
               </div>
+
               {/* right part */}
               <div className="min-[1160px]:block hidden">
                 <NavLinks />
               </div>
+
               {/* Mobile Menu */}
               <div className="min-[1160px]:hidden relative ">
                 <MobileMenu />
