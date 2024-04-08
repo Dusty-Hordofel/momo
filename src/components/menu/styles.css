@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Euclid Circular A", Poppins;
+  /* color: #f9f9f9; */
+  /* background: #1e1b1f; */
+}
+
+button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    translate: 0 30px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.appear {
+  animation: appear 0.35s backwards;
+}
+
+.background {
+  /* transform: translateY(-50%) translateX(50%); */
+  top: -100px; /* Déplacer le fond hors de l'écran vers le haut */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+nav:hover > a {
+  opacity: 0.25;
+}
+
+nav > a:hover {
+  opacity: 1;
+}
+
+.menu a {
+  color: #f9f9f9;
+  font-size: 32px;
+  font-family: "Euclid Circular A";
+  padding: 20px 0 20px 20px;
+  text-decoration: none;
+  text-transform: capitalize;
+  opacity: 0;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.menu.open a {
+  opacity: 1;
+}
