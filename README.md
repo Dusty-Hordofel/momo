@@ -8,3 +8,5 @@
 - add [CloudinaryUpload](src/utils/cloudinary/CloudinaryUpload.tsx)
   <!-- https://cloudinary.com/blog/guest_post/signed-uploads-in-cloudinary-with-next-js -->
 - add [sign-file](src/app/api/users/sign-file/route.ts).
+
+### 12. Ajout de la page d'acceuil
