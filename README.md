@@ -12,3 +12,5 @@
 ### 12. Ajout de la page d'acceuil
 
 ### 13. Mise à jour de la Navigation
+
+### 14. Suppression de la variable d'environnement
