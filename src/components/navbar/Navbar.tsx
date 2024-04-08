@@ -6,9 +6,15 @@ import NavLinks from "./NavLinks";
 import MobileMenu from "@/components/navbar/MobileMenu";
 import { usePathname } from "next/navigation";
 import { disableNavAndFooter } from "@/app/disableNavAndFooter";
+import { useCurrentUserRole } from "@/hooks/use-current-user-role";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const role = useCurrentUserRole();
+  console.log("🚀 ~ file: Navbar.tsx ~ role", role);
+  const user = useCurrentUser();
+  console.log("🚀 ~ Navbar ~ user:", user);
 
   return (
     <>
@@ -21,18 +27,21 @@ const Navbar = () => {
                 <div className="relative ">
                   <Logo />
                 </div>
-                {!["/dashboard/user/files"].includes(pathname) && (
-                  <ul className=" h-full  min-[1160px]:place-items-center  min-[1160px]:gap-x-5 hidden  min-[1160px]:flex">
-                    <li className=" hover:bg-gray-200 hover:rounded py-4 px-8 ">
-                      <NavLink
-                        href="centres-formations"
-                        className="text-lg"
-                        // className="bg-red-500"
-                        title="Centres de formation"
-                      />
-                    </li>
-                  </ul>
-                )}
+                {
+                  // !["/dashboard/user/files"].includes(pathname)
+                  !user && !role && (
+                    <ul className=" h-full  min-[1160px]:place-items-center  min-[1160px]:gap-x-5 hidden  min-[1160px]:flex">
+                      <li className=" hover:bg-gray-200 hover:rounded py-4 px-8 ">
+                        <NavLink
+                          href="centres-formations"
+                          className="text-lg"
+                          // className="bg-red-500"
+                          title="Centres de formation"
+                        />
+                      </li>
+                    </ul>
+                  )
+                }
               </div>
 
               {/* right part */}

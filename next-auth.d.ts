@@ -8,6 +8,7 @@ declare module "next-auth" {
       email: string;
       lastName: string;
       image: string;
+      isTwoFactorEnabled: boolean;
       role: "user" | "admin" | "superAdmin" | "centre";
     };
   }
