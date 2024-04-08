@@ -1,6 +1,6 @@
-import { currentUser } from "@/utils/currentUser";
-import { currentUserRole } from "@/utils/currentUserRole";
-import { getFiles } from "@/utils/requests";
+import { currentUser } from "@/utils/auth/currentUser";
+import { currentUserRole } from "@/utils/auth/currentUserRole";
+import { getFiles } from "@/utils/services/requests";
 import { Session } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -31,8 +31,10 @@ const FilesPage = async () => {
 
         {/* <SearchBar query={query} setQuery={setQuery} /> */}
         {/* "/dashboard/user/add-file" */}
-        <Link href="/dashboard/user/add-file">
-          <Button className="px-3 py-4">Télécharger le fichier</Button>
+        <Link href="/dashboard/user/files/add-file">
+          <Button className="px-3 py-4 text-base" size="lg">
+            Ajouter un fichier
+          </Button>
         </Link>
       </div>
       <div

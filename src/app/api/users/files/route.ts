@@ -1,7 +1,7 @@
 import connectDB from "@/config/database";
 import FileModel from "@/models/fileModel";
-import { currentUser } from "@/utils/currentUser";
-import { currentUserRole } from "@/utils/currentUserRole";
+import { currentUser } from "@/utils/auth/currentUser";
+import { currentUserRole } from "@/utils/auth/currentUserRole";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 

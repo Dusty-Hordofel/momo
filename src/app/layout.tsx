@@ -7,6 +7,7 @@ import Navbar from "@/components/navbar/Navbar";
 import { getServerSession } from "next-auth";
 
 import { Toaster } from "@/components/ui/toaster";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,7 @@ export default async function RootLayout({
         <body className={inter.className}>
           <Navbar />
           <main>{children}</main>
-          {/* <Footer /> */}
+          <Footer />
           <Toaster />
         </body>
       </html>

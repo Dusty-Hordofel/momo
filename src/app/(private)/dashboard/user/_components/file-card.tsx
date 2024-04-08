@@ -12,10 +12,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FileTextIcon, GanttChartIcon, ImageIcon } from "lucide-react";
 import { ReactNode } from "react";
 import Image from "next/image";
-import { formatRelative } from "date-fns";
+
+import frLocale from "date-fns/locale/fr";
 import FileCardActions from "./file-actions";
 import { CldImage } from "next-cloudinary";
-
+// import { formatRelativeDate } from "@/utils/dateUtils";
+import { formatRelative } from "date-fns";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
+import { formatDateWithLocale } from "@/utils/dateUtils";
 type file = {
   _id: string;
   fileName: string;
@@ -38,8 +43,6 @@ type file = {
 //   "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
 
 const FileCard = ({ file }: { file: file }) => {
-  console.log("🚀 ~ FileCard ~ file:", file.fileType);
-  // console.log("🚀 ~ FileCard ~ file:", file);
   const typeIcons = {
     image: <ImageIcon />,
     pdf: <FileTextIcon />,
@@ -91,7 +94,7 @@ const FileCard = ({ file }: { file: file }) => {
           <p>{file.owner.name}</p>
         </div>
         <div className="text-xs text-gray-700 ">
-          {formatRelative(new Date(file.createdAt), new Date())}
+          {formatDateWithLocale(new Date(file.createdAt), "PPP", fr)}
         </div>
       </CardFooter>
     </Card>

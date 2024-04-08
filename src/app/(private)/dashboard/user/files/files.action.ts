@@ -1,8 +1,8 @@
 // import { revalidate } from "@/app/api/users/files/route";
 import connectDB from "@/config/database";
 import Files from "@/models/fileModel";
-import { currentUser } from "@/utils/currentUser";
-import { currentUserRole } from "@/utils/currentUserRole";
+import { currentUser } from "@/utils/auth/currentUser";
+import { currentUserRole } from "@/utils/auth/currentUserRole";
 // import { currentUser } from "@/utils/next-auth/currentUser";
 // import { currentUserRole } from "@/utils/next-auth/currentUserRole";
 import { revalidatePath } from "next/cache";
