@@ -23,7 +23,7 @@ const FilesPage = async () => {
   // }
 
   return (
-    <div className="min-h-screen w-full">
+    <>
       {/* <UserInfo user={user} label="User Info" /> */}
 
       {/* <SearchBar query={query} setQuery={setQuery} /> */}
@@ -46,7 +46,7 @@ const FilesPage = async () => {
           Aucun fichier disponible dans votre espace.
         </p>
       )}
-    </div>
+    </>
   );
 };
 
