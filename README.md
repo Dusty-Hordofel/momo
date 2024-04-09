@@ -14,3 +14,5 @@
 ### 13. Mise à jour de la Navigation
 
 ### 14. Suppression de la variable d'environnement
+
+### 15. Suppression temporaire des fichiers , ajout comme favoris.
