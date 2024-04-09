@@ -14,13 +14,13 @@ import { authOptions } from "@/utils/auth/authOptions";
 import { Settings2Icon, SettingsIcon } from "lucide-react";
 
 const FilesPage = async () => {
-  const user = await currentUser();
-  const userRole = await currentUserRole();
+  // const user = await currentUser();
+  // const userRole = await currentUserRole();
   const { files }: any = await getAllFiles(false);
 
-  if (!user && userRole !== "user") {
-    redirect("/auth/login");
-  }
+  // if (!user && userRole !== "user") {
+  //   redirect("/auth/login");
+  // }
 
   return (
     <div className="min-h-screen w-full">
