@@ -12,11 +12,12 @@ export default async function UserDashboardLayout({
   children: React.ReactNode;
 }>) {
   const user = await currentUser();
-  // const userRole = await currentUserRole();
+  const userRole = await currentUserRole();
 
-  // if (!user && userRole !== "user") {
-  //   redirect("/auth/login");
-  // }
+  if (!user && userRole !== "user") {
+    redirect("/auth/login");
+  }
+
   return (
     <main className="container mx-auto pt-12 overflow-hidden">
       <div className=" h-max py-5 flex flex-col justify-start gap-y-5 border-y border-gray-400">
