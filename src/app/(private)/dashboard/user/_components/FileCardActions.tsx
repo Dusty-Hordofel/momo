@@ -71,11 +71,11 @@ const FileCardActions = ({ file }: { file: file }) => {
             <AlertDialogAction
               onClick={async () => {
                 toggleShouldDeleteFiles(file._id);
-                toast({
-                  variant: "default",
-                  title: "Fichier marqué pour suppression",
-                  description: "Votre fichier sera bientôt supprimé",
-                });
+                // toast({
+                //   variant: "default",
+                //   title: "Fichier marqué pour suppression",
+                //   description: "Votre fichier sera bientôt supprimé",
+                // });
               }}
             >
               Continuer
