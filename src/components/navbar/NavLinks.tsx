@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import LoginButton from "../auth/login-button";
 import { Button } from "../ui/button";
 import NavLink from "./NavLink";
-import { useCurrentUserRole } from "@/hooks/use-current-user-role";
-import { useCurrentUser } from "@/hooks/use-current-user";
+import { useCurrentUserRole } from "@/hooks/useCurrentUserRole.hooks";
+import { useCurrentUser } from "@/hooks/useCurrentUser.hooks";
 
 const NavLinks = () => {
   const callbackUrl = "/";
@@ -19,12 +19,12 @@ const NavLinks = () => {
   const [providers, setProviders] = useState(null);
 
   const pathname = usePathname();
-  console.log("🚀 ~ NavLinks ~ pathname:", pathname);
+  // console.log("🚀 ~ NavLinks ~ pathname:", pathname);
 
   const role = useCurrentUserRole();
-  console.log("🚀 ~ file: Navbar.tsx ~ role", role);
+  // console.log("🚀 ~ file: Navbar.tsx ~ role", role);
   const user = useCurrentUser();
-  console.log("🚀 ~ Navbar ~ user:", user);
+  // console.log("🚀 ~ Navbar ~ user NAVLINKS:", user);
 
   useEffect(() => {
     const setAuthProviders = async () => {

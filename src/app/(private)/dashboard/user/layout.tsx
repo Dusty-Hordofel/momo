@@ -1,4 +1,4 @@
-import { SideNav } from "./side-nav";
+import { SideNav } from "./SideNav";
 
 export default function UserDashboardLayout({
   children,

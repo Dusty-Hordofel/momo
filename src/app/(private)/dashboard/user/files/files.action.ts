@@ -10,6 +10,7 @@ import { revalidatePath } from "next/cache";
 connectDB();
 export const getAllFiles = async (deleteChoice: boolean) => {
   try {
+    let files;
     const user = await currentUser();
     const userRole = await currentUserRole();
 
@@ -25,7 +26,7 @@ export const getAllFiles = async (deleteChoice: boolean) => {
       );
     }
 
-    const files = await Files.find({
+    files = await Files.find({
       shouldDelete: deleteChoice,
       owner: user.id,
     })
@@ -37,6 +38,8 @@ export const getAllFiles = async (deleteChoice: boolean) => {
       .sort({ createdAt: -1 });
 
     const dbUserId = files[0].owner._id.toString();
+
+    // console.log("🚀 ~ getAllFiles ~ files:", files);
 
     //verifier que l'utilisateur est le propriétaire du fichier grace à l'id
     if (dbUserId !== user.id) {
@@ -50,6 +53,14 @@ export const getAllFiles = async (deleteChoice: boolean) => {
         }
       );
     }
+
+    // if (files.length > 0) {
+    //   return { files: JSON.parse(JSON.stringify(files)) };
+    // } else {
+    //   return { files: [] };
+    // }
+
+    // revalidatePath("/api/users/files");
 
     return { files: JSON.parse(JSON.stringify(files)) };
   } catch (error) {

@@ -14,7 +14,7 @@ import { ReactNode } from "react";
 import Image from "next/image";
 
 import frLocale from "date-fns/locale/fr";
-import FileCardActions from "./file-actions";
+import FileCardActions from "./FileCardActions";
 import { CldImage } from "next-cloudinary";
 // import { formatRelativeDate } from "@/utils/dateUtils";
 import { formatRelative } from "date-fns";
@@ -26,6 +26,8 @@ type file = {
   fileName: string;
   fileUrl: string;
   fileType: string;
+  isFavorited: boolean;
+  shouldDelete: boolean;
   owner: {
     role: string;
     favoriteFiles: string[];
@@ -37,20 +39,7 @@ type file = {
   createdAt: string;
 };
 
-// ("use client");
-// import { pdfjs } from "react-pdf";
-// pdfjs.GlobalWorkerOptions.workerSrc =
-//   "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
-
 const FileCard = ({ file }: { file: file }) => {
-  const typeIcons = {
-    image: <ImageIcon />,
-    pdf: <FileTextIcon />,
-    csv: <GanttChartIcon />,
-    avif: <ImageIcon />,
-    webp: <ImageIcon />,
-  } as Record<"image" | "pdf" | "csv" | "avif" | "webp", ReactNode>;
-
   return (
     <Card>
       <CardHeader className="relative">

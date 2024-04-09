@@ -6,15 +6,15 @@ import NavLinks from "./NavLinks";
 import MobileMenu from "@/components/navbar/MobileMenu";
 import { usePathname } from "next/navigation";
 import { disableNavAndFooter } from "@/app/disableNavAndFooter";
-import { useCurrentUserRole } from "@/hooks/use-current-user-role";
-import { useCurrentUser } from "@/hooks/use-current-user";
+import { useCurrentUserRole } from "@/hooks/useCurrentUserRole.hooks";
+import { useCurrentUser } from "@/hooks/useCurrentUser.hooks";
 
 const Navbar = () => {
   const pathname = usePathname();
   const role = useCurrentUserRole();
-  console.log("🚀 ~ file: Navbar.tsx ~ role", role);
+  // console.log("🚀 ~ file: Navbar.tsx ~ role", role);
   const user = useCurrentUser();
-  console.log("🚀 ~ Navbar ~ user:", user);
+  // console.log("🚀 ~ Navbar ~ user:", user);
 
   return (
     <>
