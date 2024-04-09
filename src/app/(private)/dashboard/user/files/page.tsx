@@ -11,6 +11,7 @@ import Link from "next/link";
 import { getAllFiles } from "./files.action";
 import { UserInfo } from "@/components/user-info";
 import { authOptions } from "@/utils/auth/authOptions";
+import { Settings2Icon, SettingsIcon } from "lucide-react";
 
 const FilesPage = async () => {
   const user = await currentUser();
@@ -22,16 +23,17 @@ const FilesPage = async () => {
   }
 
   return (
-    <div>
+    <div className="min-h-screen w-full">
       {/* <UserInfo user={user} label="User Info" /> */}
+
+      {/* <SearchBar query={query} setQuery={setQuery} /> */}
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-bold">Vos Fichiers</h1>
-        {/* <SearchBar query={query} setQuery={setQuery} /> */}
-        <Link href="/dashboard/user/files/add-file">
+        <h1 className="text-4xl font-bold">Mes fichiers</h1>
+        {/* <Link href="/dashboard/user/files/add-file">
           <Button className="px-3 py-4 text-base" size="lg">
             Ajouter un fichier
           </Button>
-        </Link>
+        </Link> */}
       </div>
       {files?.length > 0 ? (
         <div className={cn("grid xl:grid-cols-3 gap-4 md:grid-cols-2")}>

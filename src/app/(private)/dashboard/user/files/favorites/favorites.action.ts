@@ -8,8 +8,8 @@ import { currentUser } from "@/utils/auth/currentUser";
 import { currentUserRole } from "@/utils/auth/currentUserRole";
 import User from "@/models/userModel";
 
-connectDB();
 export const favoriteFiles = async () => {
+  connectDB();
   try {
     const user = await currentUser();
     const userRole = await currentUserRole();
@@ -31,6 +31,7 @@ export const favoriteFiles = async () => {
 };
 
 export const toggleFavorite = async (fileId: string) => {
+  connectDB();
   try {
     const loggedInUser = await currentUser();
     const loggedInUserRole = await currentUserRole();

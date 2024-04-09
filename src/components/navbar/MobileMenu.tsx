@@ -30,23 +30,35 @@ const MobileMenu = () => {
                 onClick={() => setOpen(!open)}
               />
 
+              {session && (
+                <MobileNavLink
+                  href="/dashboard/user/files"
+                  title="Mon espace"
+                  onClick={() => setOpen(!open)}
+                />
+              )}
+
               <MobileNavLink
                 href="/centres-formations"
                 title="Centres de formation"
                 onClick={() => setOpen(!open)}
               />
 
-              <MobileNavLink
-                href="/fonctionnalites"
-                title="Fonctionnalités"
-                onClick={() => setOpen(!open)}
-              />
+              {!session && (
+                <>
+                  <MobileNavLink
+                    href="/fonctionnalites"
+                    title="Fonctionnalités"
+                    onClick={() => setOpen(!open)}
+                  />
 
-              <MobileNavLink
-                href="/demander-une-demo"
-                title="Demander une démo"
-                onClick={() => setOpen(!open)}
-              />
+                  <MobileNavLink
+                    href="/demander-une-demo"
+                    title="Demander une démo"
+                    onClick={() => setOpen(!open)}
+                  />
+                </>
+              )}
               <div className=" h-10">
                 <div className=" bg-black h-[2px] my-20"></div>
               </div>

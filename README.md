@@ -16,3 +16,5 @@
 ### 14. Suppression de la variable d'environnement
 
 ### 15. Suppression temporaire des fichiers , ajout comme favoris.
+
+### 16. Mise à jour de l'espace utilisateur
