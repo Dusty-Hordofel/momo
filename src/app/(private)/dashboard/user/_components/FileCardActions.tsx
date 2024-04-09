@@ -70,9 +70,6 @@ const FileCardActions = ({ file }: { file: file }) => {
             <AlertDialogCancel>Annuler</AlertDialogCancel>
             <AlertDialogAction
               onClick={async () => {
-                // await deleteFile({
-                //   fileId: file._id,
-                // });
                 toggleShouldDeleteFiles(file._id);
                 toast({
                   variant: "default",
