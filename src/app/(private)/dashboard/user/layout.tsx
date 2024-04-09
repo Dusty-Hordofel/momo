@@ -18,7 +18,7 @@ export default async function UserDashboardLayout({
   //   redirect("/auth/login");
   // }
   return (
-    <main className="container mx-auto pt-12 min-h-screen ">
+    <main className="container mx-auto pt-12 overflow-hidden">
       <div className=" h-max py-5 flex flex-col justify-start gap-y-5 border-y border-gray-400">
         <div className="flex justify-end">
           <span>
@@ -29,12 +29,12 @@ export default async function UserDashboardLayout({
           </span>
         </div>
         <div>
-          <h1 className="lg:text-9xl md:text-7xl text-5xl">
+          <h1 className="lg:text-9xl md:text-7xl text-2xl">
             {user?.name
               .split(" ")
               .map((username) => username[0].toUpperCase() + username.slice(1))}
           </h1>
-          <div className="pl-3 flex justify-between items-center">
+          <div className="flex justify-between items-center mt-2">
             {/* <div className="bg-red-400"> */}
             <picture>
               <img
