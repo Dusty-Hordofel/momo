@@ -8,6 +8,7 @@ import { currentUserRole } from "@/utils/auth/currentUserRole";
 import { redirect } from "next/navigation";
 import { favoriteFiles } from "./favorites.action";
 import FileCard from "../../_components/FileCard";
+import { cn } from "@/lib/utils";
 // import { getSessionUser } from "@/utils/next-auth/getSessionUser";
 // import { redirect } from "next/navigation";
 // import { currentUser } from "@/utils/next-auth/currentUser";
@@ -28,9 +29,9 @@ const FavoritesPage = async () => {
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-bold">Vos Fichiers Favoris</h1>
+        <h1 className="text-4xl font-bold">Mes favoris</h1>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className={cn("grid xl:grid-cols-3 gap-4 md:grid-cols-2")}>
         {files?.map((file: any) => (
           <FileCard key={file._id} file={file} />
         ))}

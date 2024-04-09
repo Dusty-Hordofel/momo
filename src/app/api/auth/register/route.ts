@@ -10,8 +10,8 @@ interface UserData {
   password?: string;
 }
 export async function POST(req: Request, res: Response) {
+  await connectDB();
   try {
-    await connectDB();
     const body = await req.json();
     const { name, email, password }: UserData = body;
     if (!email || !password || !name) {

@@ -6,8 +6,8 @@ import connectDB from "@/config/database";
 import { currentUser } from "@/utils/auth/currentUser";
 import { currentUserRole } from "@/utils/auth/currentUserRole";
 
-connectDB();
 export const deleteFile = async (fileId: string) => {
+  connectDB();
   try {
     const loggedInUser = await currentUser();
     const loggedInUserRole = await currentUserRole();
@@ -39,6 +39,7 @@ export const deleteFile = async (fileId: string) => {
 };
 
 export const toggleShouldDeleteFiles = async (fileId: string) => {
+  connectDB();
   try {
     const loggedInUser = await currentUser();
     const loggedInUserRole = await currentUserRole();

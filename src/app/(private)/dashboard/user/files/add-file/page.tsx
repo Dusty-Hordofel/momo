@@ -69,9 +69,10 @@ export default function AddFile() {
   }, [uploadModalOpen]);
 
   return (
-    <main className="flex min-h-screen flex-col  p-24 space-y-10 max-w-screen-lg">
-      <h1 className="text-4xl font-bold">Ajouter un fichier</h1>
-      <form ref={ref} onSubmit={handleSubmit} className="space-y-10">
+    // min-h-screen
+    <main className="flex flex-col  space-y-10 max-w-screen-lg ">
+      <h1 className="text-4xl font-bold ">Ajouter un fichier</h1>
+      <form ref={ref} onSubmit={handleSubmit} className="space-y-10 ">
         <div className="item">
           <label htmlFor="fileName">
             <h2 className="text-lg font-bold mb-5">Nom du fichier</h2>

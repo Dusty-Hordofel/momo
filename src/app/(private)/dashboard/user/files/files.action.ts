@@ -7,8 +7,8 @@ import { currentUserRole } from "@/utils/auth/currentUserRole";
 // import { currentUserRole } from "@/utils/next-auth/currentUserRole";
 import { revalidatePath } from "next/cache";
 
-connectDB();
 export const getAllFiles = async (deleteChoice: boolean) => {
+  connectDB();
   try {
     let files;
     const user = await currentUser();

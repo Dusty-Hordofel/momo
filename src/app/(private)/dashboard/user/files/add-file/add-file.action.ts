@@ -1,4 +1,5 @@
 "use server";
+import connectDB from "@/config/database";
 import FileModel from "@/models/fileModel";
 import { currentUser } from "@/utils/auth/currentUser";
 import { currentUserRole } from "@/utils/auth/currentUserRole";
@@ -12,6 +13,8 @@ type fileType = {
 };
 
 export const addDataToFile = async (formData: FormData) => {
+  connectDB();
+
   const fileName = formData.get("fileName");
   const fileId = formData.get("fileId");
   const fileUrl = formData.get("fileUrl");
@@ -49,6 +52,7 @@ export const addDataToFile = async (formData: FormData) => {
       success: true,
     };
   } catch (error: any) {
+    console.log("🚀 ~ addDataToFile ~ error:", error);
     return {
       message: error.message,
       error: true,

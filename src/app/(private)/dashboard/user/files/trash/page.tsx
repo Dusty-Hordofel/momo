@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 // import { favoriteFiles } from "./favorites.action";
 import FileCard from "../../_components/FileCard";
 import { getAllFiles } from "../files.action";
+import { cn } from "@/lib/utils";
 
 const TrashedFilesPage = async () => {
   const user = await currentUser();
@@ -21,9 +22,9 @@ const TrashedFilesPage = async () => {
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-bold">Fichiers mis dans la corbeille</h1>
+        <h1 className="text-4xl font-bold">Ma corbeille</h1>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className={cn("grid xl:grid-cols-3 gap-4 md:grid-cols-2")}>
         {files?.map((file: any) => (
           <FileCard key={file._id} file={file} />
         ))}

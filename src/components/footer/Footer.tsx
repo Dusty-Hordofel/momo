@@ -7,7 +7,7 @@ import React from "react";
 const Footer = () => {
   const pathname = usePathname();
   return (
-    <div className="mt-10">
+    <div className="mt-40">
       {!disableNavAndFooter.includes(pathname) && (
         <div className="flex gap-10 border-t-[1px] border-black  h-max py-5 pr-5 z-50 bg-white justify-center max-lg:flex-col place-items-center">
           <p>
