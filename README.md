@@ -18,3 +18,17 @@
 ### 15. Suppression temporaire des fichiers , ajout comme favoris.
 
 ### 16. Mise à jour de l'espace utilisateur
+
+### 17. Mise à jour de la taille du text pour les Inputs.
+
+- Cela empechera le zoom sur l'écran lorsque je vais cliquer sur l'input! \* [ Clicking an Input on a Phone Causes Screen Zoom](https://emmamontgomery.medium.com/javascript-website-clicking-an-input-on-a-phone-causes-screen-zoom-e5bd02eb65bf#:~:text=Why%20is%20this%20happening%3F,can%20better%20see%20any%20text.)
+
+```css
+@media screen and (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+```
