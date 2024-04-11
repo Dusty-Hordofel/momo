@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Ban, Bell, FlaskConical, Library } from "lucide-react";
 import React, { useState } from "react";
-import AddCenterButton from "./AddCenterButton";
+// import AddCenterButton from "./AddCenterButton";
 import { getCenterRequestsByUser } from "./centre.action";
 
 const GestionCentresFormation = async () => {
@@ -37,7 +37,7 @@ const GestionCentresFormation = async () => {
               <p>Vous ne disposez pas d&apos;un centre de formation</p>
             )}
           </div>
-          <AddCenterButton />
+          {/* <AddCenterButton /> */}
         </div>
         <div className="flex flex-col gap-4  rounded-md pt-5 items-center justify-center">
           <div className="flex gap-4 ">
