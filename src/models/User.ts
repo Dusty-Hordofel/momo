@@ -1,17 +1,4 @@
 import mongoose from "mongoose";
-import { unique } from "next/dist/build/utils";
-
-const memberSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  role: {
-    type: String,
-    required: true,
-  },
-});
 
 const UserSchema = new mongoose.Schema(
   {
@@ -55,7 +42,16 @@ const UserSchema = new mongoose.Schema(
         ref: "File", //the collection where we take the id from
       },
     ],
-    members: [memberSchema],
+    centres: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Center",
+        // required: true,
+      },
+    ],
+    pendingRequests: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "CenterRequest" },
+    ],
   },
   { timestamps: true }
 );

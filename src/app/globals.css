@@ -75,6 +75,16 @@
   }
 }
 
+@layer components {
+  .navlink {
+    @apply md:flex rounded-md w-full my-[2px] p-3 h-12 justify-start items-center  hover:text-accent-foreground hover:bg-gray-400/10 cursor-pointer;
+  }
+
+  .menuItem {
+    @apply dark:hover:bg-[#3C3C3C] !cursor-pointer flex items-center gap-x-2 !px-4 !py-3.5 !m-1.5 !rounded-lg font-medium;
+  }
+}
+
 @media screen and (max-width: 767px) {
   input,
   select,

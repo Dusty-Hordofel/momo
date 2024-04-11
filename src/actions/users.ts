@@ -1,5 +1,5 @@
 import connectDB from "@/config/database";
-import User from "../models/userModel";
+import User from "../models/User";
 import bcrypt from "bcrypt";
 
 interface IUser {

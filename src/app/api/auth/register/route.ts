@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 import { NextResponse } from "next/server";
 import connectDB from "@/config/database";
-import User from "@/models/userModel";
+import User from "@/models/User";
 
 interface UserData {
   name: string;

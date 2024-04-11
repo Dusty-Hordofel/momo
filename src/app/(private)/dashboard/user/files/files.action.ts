@@ -10,7 +10,7 @@ import { revalidatePath } from "next/cache";
 export const getAllFiles = async (deleteChoice: boolean) => {
   connectDB();
   try {
-    let files;
+    // let files;
     const user = await currentUser();
     const userRole = await currentUserRole();
 
@@ -26,16 +26,29 @@ export const getAllFiles = async (deleteChoice: boolean) => {
       );
     }
 
-    files = await Files.find({
+    const files = await Files.find({
       shouldDelete: deleteChoice,
       owner: user.id,
     })
       .select(" -updatedAt -__v")
       .populate({
         path: "owner", // Field to populate
-        select: "-members -emailVerified -email", // Exclude specific fields from the populated document
+        select: "-centres -email", // Exclude specific fields from the populated document
       })
       .sort({ createdAt: -1 });
+
+    //si l'utilisateur n'a pas de fichier
+    if (files.length === 0) {
+      return new Response(
+        JSON.stringify({
+          message: "Vous n'avez pas de fichier dans votre espace de stockage",
+          error: true,
+        }),
+        {
+          status: 404,
+        }
+      );
+    }
 
     const dbUserId = files[0].owner._id.toString();
 
