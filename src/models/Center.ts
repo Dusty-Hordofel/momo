@@ -2,19 +2,43 @@ import mongoose from "mongoose";
 
 const centerSchema = new mongoose.Schema(
   {
-    // id: {
-    //   type: Number,
-    //   required: true,
-    // },
-    title: {
+    name: {
       type: String,
       required: true,
     },
-    imageSrc: {
+    image: {
       type: String,
       default:
         "https://images.unsplash.com/photo-1495314736024-fa5e4b37b979?q=80&w=2973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
+    email: {
+      type: String,
+      required: true,
+      max: 50,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      min: 6,
+    },
+    description: { type: String },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      // required: true,
+    },
+    // createdAt: { type: Date, default: Date.now },
+    stagiaires: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        match: { role: "user" }, // Filtrer les membres par leur rôle
+      },
+    ],
+    moderators: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    admins: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+
     address: {
       street: String,
       postalCode: String,
@@ -37,7 +61,6 @@ const centerSchema = new mongoose.Schema(
       twitter: String,
       linkedin: String,
     },
-    description: String,
   },
   { timestamps: true }
 );

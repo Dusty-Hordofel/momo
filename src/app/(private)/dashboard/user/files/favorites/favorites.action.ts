@@ -6,7 +6,7 @@ import File from "@/models/fileModel";
 import connectDB from "@/config/database";
 import { currentUser } from "@/utils/auth/currentUser";
 import { currentUserRole } from "@/utils/auth/currentUserRole";
-import User from "@/models/userModel";
+import User from "@/models/User";
 
 export const favoriteFiles = async () => {
   connectDB();

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { Settings2Icon, UserCog, UserCog2, UserCog2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import GestionCentresFormation from "./GestionCentresFormation";
 
 export default async function UserDashboardLayout({
   children,
@@ -62,6 +63,7 @@ export default async function UserDashboardLayout({
         </Link>
       </div> */}
       <div className="flex gap-x-20 flex-col">
+        <GestionCentresFormation />
         <SideNav />
         <div className="w-full">{children}</div>
       </div>

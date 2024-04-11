@@ -1,6 +1,6 @@
 "use server";
 
-import CenterModel from "@/models/centerModel";
+import CenterModel from "@/models/Center";
 import { esrpCenters } from "@/assets/esrpCenters";
 import connectDB from "@/config/database";
 
