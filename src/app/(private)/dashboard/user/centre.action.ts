@@ -7,7 +7,41 @@ import User from "@/models/User";
 import { currentUser } from "@/utils/auth/currentUser";
 import { currentUserRole } from "@/utils/auth/currentUserRole";
 
-//ajout de la fonctionnalité de gestion des centres de formation
+//récupérer les requetes d'ajout de centre de formation par utilisateur
+
+export async function getCenterRequestsByUser() {
+  connectDB();
+  try {
+    const loggedInUser = await currentUser();
+    const loggedInUserRole = await currentUserRole();
+
+    if (!loggedInUser || loggedInUserRole !== "user") {
+      return {
+        message: "vous n'êtes pas autorisé à effectuer cette action",
+        error: true,
+      };
+    }
+
+    //récupérer les requetes qui  appartiennent à lutilisateur
+    const userRequest = await CenterRequest.find({
+      user: loggedInUser.id,
+    }).populate("center");
+    console.log("🚀 ~ getCenterRequestsByUser ~ userRequest:", userRequest);
+    if (!userRequest) {
+      return {
+        message: "vous n'avez soumis aucune demande",
+        error: true,
+      };
+    }
+    return { userRequest: JSON.parse(JSON.stringify(userRequest)) };
+  } catch (error) {
+    console.log("🚀 ~ getCenterRequestsByUser ~ error:", error);
+    return {
+      message: "Erreur lors de la récupération de vos demandes",
+      success: false,
+    };
+  }
+}
 
 //envoyer une demande pour ajouter un centre de formation
 export async function sendRequest(

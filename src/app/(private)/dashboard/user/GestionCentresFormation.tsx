@@ -1,66 +1,77 @@
-"use client";
+// "use client";
 import { Button } from "@/components/ui/button";
 import { Ban, Bell, FlaskConical, Library } from "lucide-react";
 import React, { useState } from "react";
 import AddCenterButton from "./AddCenterButton";
+import { getCenterRequestsByUser } from "./centre.action";
 
-type Props = {};
-
-const GestionCentresFormation = (props: Props) => {
-  const [centresFormation, setCentresFormation] = useState([]);
-  const [etatDemande, setEtatDemande] = useState("");
-  const [notifications, setNotifications] = useState([]);
+const GestionCentresFormation = async () => {
+  const centersInfo = await getCenterRequestsByUser();
+  console.log(
+    "🚀 ~ GestionCentresFormation ~ centersInfo:",
+    centersInfo?.userRequest?.length
+  );
 
   return (
-    // grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4
     <div className="border-b border-gray-400 gap-8  py-10 mb-10 ">
       <h2 className="md:text-4xl text-xl mb-10">
         Gestion des Centres de Formation
       </h2>
-      {/* grid lg:grid-cols-3 gap-x-10 */}
-      <div className="flex justify-between">
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-4">
+      <div className="md:flex md:justify-between grid grid-cols-1 gap-10  rounded-md overflow-hidden">
+        <div className="flex flex-col gap-4  rounded-md pt-5 ">
+          <div className="flex gap-4 justify-center items-center ">
             <Library strokeWidth={1} className="w-7 h-7" />
             <h3 className="text-2xl font-bold">Mon Centre de Formation</h3>
           </div>
           <div className="flex gap-4 items-center justify-center">
-            <Ban color="red" size={15} />
-            <p>Vous ne disposez pas d&apos;un centre de formation</p>
+            {centersInfo?.userRequest?.length > 0 ? null : (
+              <Ban color="red" size={15} />
+            )}
+            {centersInfo?.userRequest?.length > 0 ? (
+              <p>
+                Vous disposez de <b>{centersInfo?.userRequest?.length}</b>{" "}
+                demande{centersInfo?.userRequest?.length > 1 ? "s" : ""} de
+                formation
+              </p>
+            ) : (
+              <p>Vous ne disposez pas d&apos;un centre de formation</p>
+            )}
           </div>
-          {/* <Button size="lg">
-            <span className="py-4">Ajouter un Centre</span>
-          </Button> */}
           <AddCenterButton />
         </div>
-        {/* <ul>
-          {centresFormation.map((centre, index) => (
-            <li key={index}>Olive</li>
-          ))}
-        </ul> */}
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-4">
+        <div className="flex flex-col gap-4  rounded-md pt-5 items-center justify-center">
+          <div className="flex gap-4 ">
             <FlaskConical strokeWidth={1} className="w-7 h-7" />
             <h3 className="text-2xl font-bold">État de la demande</h3>
           </div>
-          <div className="flex gap-4 items-center justify-center">
-            <Ban color="red" size={15} />
-            <p>Aucune demande en cours</p>
+          <div className="space-y-4 w-full text-center">
+            {centersInfo?.userRequest?.length > 0 ? (
+              <>
+                {centersInfo?.userRequest?.map(
+                  (request: any, index: number) => (
+                    <p>
+                      La requete n° <b>{index}</b> est en{" "}
+                      <b>{request.status}</b>
+                    </p>
+                  )
+                )}
+              </>
+            ) : (
+              <>
+                <Ban color="red" size={15} />
+                <p>Aucune demande en cours</p>
+              </>
+            )}
           </div>
         </div>
-        {/* <p>{etatDemande}</p> */}
-        <div className="flex flex-col gap-4">
+
+        <div className="flex flex-col gap-4  rounded-md pt-5 justify-center items-center">
           <div className="flex gap-4">
             <Bell strokeWidth={1} className="w-7 h-7" />
             <h3 className="text-2xl font-bold">Notifications</h3>
           </div>
-          <p>Aucune notification</p>
+          <p className="text-center w-full">Aucune notification</p>
         </div>
-        {/* <ul>
-        {notifications.map((notification) => (
-          <li key={notification.id}>{notification.contenu}</li>
-        ))}
-      </ul> */}
       </div>
     </div>
   );
