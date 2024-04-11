@@ -1,10 +1,6 @@
-import "@mantine/core/styles.css";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import Navbar from "./components/navbar/Navbar";
 import AuthProvider from "@/components/providers/AuthProvider";
 import Navbar from "@/components/navbar/Navbar";
 import { getServerSession } from "next-auth";
@@ -29,12 +25,10 @@ export default async function RootLayout({
     <AuthProvider session={session}>
       <html lang="en">
         <body className={inter.className}>
-          <MantineProvider>
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-            <Toaster />
-          </MantineProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <Toaster />
         </body>
       </html>
     </AuthProvider>
