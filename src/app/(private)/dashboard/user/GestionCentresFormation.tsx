@@ -49,7 +49,7 @@ const GestionCentresFormation = async () => {
               <>
                 {centersInfo?.userRequest?.map(
                   (request: any, index: number) => (
-                    <p>
+                    <p key={index}>
                       La requete n° <b>{index}</b> est en{" "}
                       <b>{request.status}</b>
                     </p>
