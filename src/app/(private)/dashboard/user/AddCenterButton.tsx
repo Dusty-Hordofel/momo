@@ -1,12 +1,21 @@
 "use client";
 
+// import Select from "@/components/Select";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../../components/ui/select";
+} from "@/components/ui/select";
+
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "../../../../components/ui/select";
 
 const AddCenterButton = () => {
   return (

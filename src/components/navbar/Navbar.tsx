@@ -20,7 +20,10 @@ const Navbar = () => {
     <>
       {!disableNavAndFooter.includes(pathname) && (
         <>
-          <header className="fixed top-0 inset-x-0 h-20 overflow-hidden bg-white z-[1000]">
+          <header className="fixed top-0 inset-x-0 min-h-20 overflow-hidden bg-white z-[1000]">
+            <div className="font-bold text-5xl my-5 py-5 max-sm:text-3xl max-[355px]:text-2xl bg-black text-white">
+              <p className="text-center">PROJECT IN PROGRESS</p>
+            </div>
             <div className="flex  justify-between  h-full py-3  w-[97.5%] mx-auto">
               {/* left part */}
               <div className=" flex gap-x-5">
