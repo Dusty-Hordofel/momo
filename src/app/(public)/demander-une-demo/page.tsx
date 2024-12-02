@@ -4,19 +4,14 @@ import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ContactType, esrpContactSchema } from "@/validators/demoFormSchema";
 import Input from "@/components/Inputs";
-import Select from "@/components/Select";
 import { employees, motifs } from "@/assets/employees";
 import { States } from "@/assets/States";
 import { Button } from "@/components/ui/button";
-// import { esrpContactEmail } from "@/actions/send";
-// import Contact from "@/components/email/Contact";
 import { resend } from "@/lib/resend";
-// import ContactEsrpEmail from "@/emails/Contact";
 import { useToast } from "@/components/ui/use-toast";
+import Select from "@/components/select";
 
-type Props = {};
-// handleSubmitEmail
-const Demo = (props: Props) => {
+const Demo = () => {
   const { toast } = useToast();
   const {
     register,

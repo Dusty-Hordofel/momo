@@ -2,12 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { Ban, Bell, FlaskConical, Library } from "lucide-react";
 import React, { useState } from "react";
-// import AddCenterButton from "./AddCenterButton";
 import { getCenterRequestsByUser } from "./centre.action";
 import AddCenterButton from "./AddCenterButton";
 
 const GestionCentresFormation = async () => {
-  const centersInfo = await getCenterRequestsByUser();
+  const centersInfo: any = await getCenterRequestsByUser();
   console.log(
     "🚀 ~ GestionCentresFormation ~ centersInfo:",
     centersInfo?.userRequest?.length
